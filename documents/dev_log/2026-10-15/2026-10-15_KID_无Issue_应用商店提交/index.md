@@ -3,7 +3,7 @@
 - 日期及时区：2026-10-15，Asia/Shanghai；作者：KID（Codex 协作）。
 - 需求：用户授权将现有应用提交远程仓库及应用商店。
 - 范围：独立 GitHub 开发仓库、Gitee 商店源码快照、官方目录审核 PR；不改 Daemon、SDK、固件或业务协议，不自动合入审核 PR。
-- 当前状态：源码已提交并推送；商店投稿已创建，等待审核；未合入或宣称上架。
+- 当前状态：GitHub 源码已合入 main；Gitee 商店 PR 因当前账号无官方目录写权限仍未合入，尚未上架。
 
 ## 调查与决策
 
@@ -63,3 +63,15 @@ GitHub 已建立独立公开仓库，main 仅含初始化规则（4c7cf2e）；�
 - [ ] 维护者审核合入后才能认定正式上架；本次提交不自动合入。
 
 本轮没有修改运行中的对话服务配置或重新发送消息，没有重复声学验收；后续只读验证不代表远端长期可用。
+
+
+### 用户授权合并与权限检查（2026-10-15 16:32 Asia/Shanghai｜KID）
+
+用户在投稿完成后明确要求处理合并，本次授权替代此前“仅提交不自动合入”的范围限制。沿用本交付档案，不重复建档。
+
+- GitHub PR #1：合并前 `MERGEABLE` / `CLEAN`，未配置必需 CI 检查；head 为 `77d032d61cf27db965db6f2f04812a476807e606`。由 draft 转为 ready，使用 `gh pr merge --merge --match-head-commit` 合入，未使用管理员绕过。
+- 已核实远端状态 `MERGED`，时间为 `2026-10-15T08:32:18Z`，合并提交 `ed5b9ee9f443851a91483d8533670943e8fa4604`。通过 gh API 检查 parent 恰好为 `4c7cf2e28591ee1d27c82fae4c9a059926b56ca4` 与 `77d032d61cf27db965db6f2f04812a476807e606`，不是 squash 或 rebase。源码已在默认分支可见，本机 main 已快进同步。
+- 合并后的文件树与此前完成回归的 PR head 完全一致（`git diff --exit-code` 无差异）。本轮未修改业务实现，不重复运行同一测试或声学播放；沿用 107 项回归及已记录的下载验收。文档状态修正以差异、链接和远端状态检查替代 TDD。
+- Gitee 官方 Swagger 核实 merge API 支持 `merge_method=merge`；PR #23 无冲突，head 仍为 `b65f79ba3d110f93ffdd9e02d05ab23f6f4333fb`，仅新增本应用固定源码且保留原有四条记录。执行普通 merge 请求返回 HTTP 403，未合并。
+- 独立只读检查官方目录接口的 `permission` 为 `pull=true, push=false, admin=false`；当前账号为 SDK 已登录的 `KID_gitee`。这是真实的仓库权限阻塞，不能通过重复请求、修改目录或改用其他账号凭据绕过。PR 保持 open，需有官方目录写权限的维护者合入 [PR #23](https://gitee.com/orulink-sz/watcherobot-app-store/pulls/23)。
+- 更新 README、RESULTS 和当前状态，明确区分源码已合入与商店尚未收录；保留上述历史待审核记录作为当时事实。固定商店源码不变，未重新投稿、重发 Bot 消息、改变机器人会话或配置。
