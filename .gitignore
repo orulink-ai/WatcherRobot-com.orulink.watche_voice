@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.local/
+.env
+.env.*
+!.env.example
+node_modules/
+*.log
+*.url
+.DS_Store
+Thumbs.db
+documents/dev_log/**/*.jpg
+documents/dev_log/**/*.png
