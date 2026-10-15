@@ -1,12 +1,14 @@
 # Watche Voice 0.1.0 交付状态
 
-2026-10-15，Asia/Shanghai。本轮应用户要求整理独立源码仓库并提交 Gitee 应用商店审核；尚未宣称已上架。
+2026-10-15，Asia/Shanghai。独立源码仓库已推送，Gitee 应用商店审核请求已成功创建，当前待审核，尚未上架。
 
 - 当前实现：Windows 本机 Grok Bot 登录复用、常驻 Python HTTPS 网关、JoyInside 半双工语音、同一任务后续结果追加与补播。
-- 上一轮自动化回归为 106 项通过；本轮新增发布排除规则的 Red/Green 测试，最终结果见[发布档案](documents/dev_log/2026-10-15/2026-10-15_KID_无Issue_应用商店提交/index.md)。
+- 最终自动化回归为 **107 项通过（19.75 秒）**，包含发布排除规则的 Red/Green 测试；JavaScript 语法与 SDK app check 通过。完整结果见[发布档案](documents/dev_log/2026-10-15/2026-10-15_KID_无Issue_应用商店提交/index.md)。
 - 最近真实只读验收：部署后页面读取到 10 个 Bot，机器人连接、待机且没有待释放语音资源。并未在本轮重新运行声学测试。
 - `.watcherignore` 排除本机配置、日志、URL、个人截图及开发测试；完整开发测试保留 GitHub 仓库。`.gitignore` 同时阻止个人材料入库。
 - 仍为实验桥接，依赖当前 Grok Bot 网关合同与本机登录。云端 503 只能有限恢复，不能保证可用性；半双工不支持自然语音插话。正式固件必须实际包含语音实现，只有能力声明不足以保证可用。
+
+发布结果：[GitHub 开发审查 PR #1（draft）](https://github.com/orulink-ai/WatcherRobot-com.orulink.watche_voice/pull/1)、[应用商店审核 PR #23（待审核）](https://gitee.com/orulink-sz/watcherobot-app-store/pulls/23)。Gitee 固定源码 commit 为 `3dc71830d5adc8713e634f713261ce328e137a77`，SDK 匿名下载通过，25 个文件逐字节一致，审核目录仅新增本应用引用并保留原有 4 条记录。
 
 以下保留早期阶段的实测记录。测试数量、未提交状态和台架状态均为当时事实，以当前档案为准；个人设备身份、串口及截图不公开。
 

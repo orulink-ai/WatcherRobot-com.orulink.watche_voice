@@ -41,7 +41,9 @@ SDK manifest 当前仅声明 Windows，其他系统需完成同等验证后再�
 
 应用 ID：`com.orulink.watche_voice`；版本：`0.1.0`；支持 Windows；SDK：`>=0.1.11,<0.2`。
 
-完整开发仓库（含测试与发布规则）：[GitHub](https://github.com/orulink-ai/WatcherRobot-com.orulink.watche_voice)。商店使用公开 Gitee 源码的固定 commit，提交审核不等于已上架。
+完整开发仓库（含测试与发布规则）：[GitHub](https://github.com/orulink-ai/WatcherRobot-com.orulink.watche_voice)。完整应用目前在 [开发审查 PR #1（draft）](https://github.com/orulink-ai/WatcherRobot-com.orulink.watche_voice/pull/1) 的 `codex/publish-watche-voice` 分支。商店使用公开 Gitee 源码的固定 commit。
+
+0.1.0 已提交[应用商店审核 PR #23](https://gitee.com/orulink-sz/watcherobot-app-store/pulls/23)，当前待审核；固定源码为 [3dc71830](https://gitee.com/KID_gitee/WatcherRobot-com.orulink.watche_voice/tree/3dc71830d5adc8713e634f713261ce328e137a77)。提交审核不等于已上架。
 
 应用商店收录后，在桌面端选择 Gitee 来源，刷新列表、安装并启动 **Watche Voice**。等待审核期间可按下文从源码启动。依赖由 SDK 根据 `app.json` 安装；语音仍需要机器人已有的 JoyInside 服务，本应用不包含 Grok Bot 订阅、云端服务额度或固件更新。
 
