@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#111110">
+  <title>Watche Voice</title>
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Watche Voice 首页"><img src="/assets/icon.svg" width="32" height="32" alt=""><span>watche<span class="brand-light"> / voice</span></span></a>
+      <div class="top-actions"><span id="connection" class="connection">正在连接应用</span><button id="settings-button" class="icon-button" aria-label="打开语音设置" title="语音设置">⚙</button></div>
+    </header>
+    <main class="workspace">
+      <section class="voice-stage" aria-labelledby="voice-title">
+        <div class="stage-heading"><span class="eyebrow">YOUR ROBOT. YOUR BOT.</span><h1 id="voice-title">让对话，自然发生。</h1><p>JoyInside 听说 · Grok Bot 思考</p></div>
+        <div id="voice-visual" class="voice-visual" data-phase="idle" aria-hidden="true"><div class="orbit"></div><div class="voice-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="status-block" role="status" aria-live="polite"><h2 id="phase-label">正在读取状态</h2><p id="phase-detail">等待应用服务响应</p></div>
+        <div id="error" class="error-notice" role="alert" hidden></div>
+        <div class="voice-controls"><button id="mute-button" class="secondary-button" disabled aria-pressed="false">暂停聆听</button><button id="main-button" class="primary-button" disabled>开始对话 <span aria-hidden="true">↗</span></button><button id="interrupt-button" class="secondary-button" disabled>停止回答，继续听</button></div>
+        <p class="privacy-note" id="privacy-note">JoyInside 处理语音，转写文字交给所选 Grok Bot。</p>
+        <div class="session-meta"><span id="device-label">设备 · 等待连接</span><span id="bot-label">Bot · 未选择</span><span id="latency-label">Bot 回复耗时 · —</span></div>
+      </section>
+      <aside class="conversation" aria-labelledby="conversation-title">
+        <div class="conversation-heading"><div><span class="eyebrow">THIS CONVERSATION</span><h2 id="conversation-title">对话记录</h2></div><span id="turn-count" class="count">0 轮</span></div>
+        <div id="messages" class="messages" role="log" aria-label="实时对话文字" aria-live="off"><div class="empty-state"><span class="empty-mark" aria-hidden="true">“</span><h3>从一句你好开始</h3><p>开始对话后，真实的语音转写会出现在这里。</p></div></div>
+        <form id="text-form" class="text-composer"><label id="text-label" for="text-input" class="sr-only">文字验证（不播报）</label><textarea id="text-input" rows="2" maxlength="4000" placeholder="也可以输入一句话…" disabled></textarea><button id="send-button" class="send-button" aria-label="发送文字" disabled>↑</button></form>
+        <p id="composer-note" class="composer-note">选择 Bot 后，可先验证文字回复（不播报）。</p>
+      </aside>
+    </main>
+    <footer class="footer"><span>WATCHE ROBOT / VOICE APPLICATION</span><span id="model-label">JOYINSIDE × GROK BOT</span></footer>
+  </div>
+  <dialog id="settings-dialog" aria-labelledby="settings-title">
+    <div class="dialog-heading"><div><span class="eyebrow">MAKE IT YOURS</span><h2 id="settings-title">语音设置</h2></div><button id="close-settings" class="icon-button" aria-label="关闭设置">×</button></div>
+    <form id="settings-form" class="settings-form">
+      <p class="field-note">先在这台电脑上登录 Grok Bot，再选择负责对话的 Bot。机器人由 JoyInside 完成语音识别与朗读，音色沿用设备设置。</p>
+      <label for="bot-select">选择 Grok Bot</label><select id="bot-select" required><option value="">正在读取 Bot 列表…</option></select>
+      <div class="bot-refresh-row"><p id="bot-status" class="field-note">正在检查本机 Grok Bot。</p><button id="refresh-bots" class="secondary-button" type="button">刷新列表</button></div>
+      <button class="primary-button" id="save-settings" type="submit">保存设置</button>
+    </form>
+    <details class="pair-details"><summary>连接另一台机器人</summary><form id="pair-form"><label for="pair-code">设备配对码</label><div class="pair-row"><input id="pair-code" autocomplete="off" required placeholder="输入配对码"><button class="secondary-button" type="submit">连接</button></div></form></details>
+    <p id="settings-feedback" role="status" class="field-note"></p>
+    <a href="https://x.ai/bot" target="_blank" rel="noopener noreferrer" class="console-link">了解 Grok Bot ↗</a>
+  </dialog>
+</body>
+</html>

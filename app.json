@@ -1,0 +1,12 @@
+{
+  "schema_version": 2,
+  "id": "com.orulink.watche_voice",
+  "name": "Watche Voice",
+  "version": "0.1.0",
+  "requires_watcherobot": ">=0.1.11,<0.2",
+  "dependencies": ["fastapi>=0.129,<1", "uvicorn>=0.30,<1", "httpx>=0.28,<1", "cryptography>=44,<48"],
+  "supported_host_platforms": ["windows"],
+  "description": "JoyInside 听说、本机 Grok Bot 思考的实验性机器人语音 Application，采用半双工会话。",
+  "author": "Orulink AI",
+  "icon": "web/icon.svg"
+}

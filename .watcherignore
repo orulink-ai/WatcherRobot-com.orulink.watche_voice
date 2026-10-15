@@ -1,0 +1,11 @@
+# Marketplace source selection is independent of .gitignore.
+.local/
+node_modules/
+*.log
+*.url
+# PurePath matching differs from Git globstar; suffix rules cover every depth.
+# Runtime artwork currently uses SVG only.
+*.jpg
+*.png
+# Development tests and their publication metadata live in the GitHub repository.
+tests/
